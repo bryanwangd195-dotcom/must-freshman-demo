@@ -13,3 +13,26 @@
 /* Desktop identity block must remain in normal flow; larger meeting-room typography */
 .hero{padding-bottom:70px}.selectorWrap{position:relative;left:auto;bottom:auto;transform:none;width:100%;grid-column:1/-1;margin-top:34px}.mustFlow{padding-top:85px}.flowNumber small{font-size:11px}.flowNumber b{font-size:32px}.flowIcon{width:58px;height:58px;font-size:29px}.flowCopy h3{font-size:23px;line-height:1.35;margin:5px 0}.flowCopy p{font-size:16px;line-height:1.7;color:#4f6b81}.requiredLabel{font-size:13px;padding:4px 10px}.flowMeta{gap:16px;margin-top:11px}.flowMeta span{font-size:14px}.flowMeta svg{width:16px}.flowCard>a{font-size:15px;padding:11px 16px}.conditionalGrid p{font-size:15px}.conditionalLabel{font-size:12px}.conditionalGrid a{font-size:14px}.faqSection .faq button b span{font-size:11px}
 @media(max-width:600px){.mustFlow{padding:65px 18px}.flowNumber small{font-size:10px}.flowNumber b{font-size:24px}.flowIcon{width:44px;height:44px;font-size:22px}.flowCopy h3{font-size:19px}.flowCopy p{font-size:15px}.requiredLabel{font-size:12px}.flowMeta span{font-size:13px}.flowCard>a{font-size:15px}}
+
+/* Identity lookup uses a true modal so no page section can clip or cover it. */
+.lookupBackdrop{position:fixed!important;inset:0!important;z-index:90!important;width:100%!important;height:100%!important;min-height:0!important;border:0!important;border-radius:0!important;background:rgba(10,34,58,.58)!important;backdrop-filter:blur(3px)}.identityLookup{position:fixed!important;left:50%!important;right:auto!important;top:50%!important;bottom:auto!important;transform:translate(-50%,-50%)!important;z-index:91!important;width:min(640px,calc(100vw - 32px))!important;max-height:calc(100vh - 40px)!important;overflow:auto!important;flex:none!important;box-shadow:0 28px 90px rgba(5,26,47,.4)!important}.lookupClose{display:grid!important;visibility:visible!important;opacity:1!important}
+@media(max-width:600px){.identityLookup{inset:auto!important;left:16px!important;right:16px!important;bottom:16px!important;top:auto!important;transform:none!important;width:auto!important;max-height:calc(100vh - 32px)!important}}
+
+/* Campus-life cards are links; keep the original visual card treatment. */
+.mascotLine>a{height:275px;border-radius:80px 80px 20px 20px;background:white;display:flex;flex-direction:column;align-items:center;justify-content:end;padding:18px;border:1px solid #f0dfc3}
+@media(max-width:600px){.mascotLine>a{height:230px;border-radius:60px 60px 16px 16px}}
+
+/* 03、04 使用與 02 一致的大型區段編號，讓新生清楚知道閱讀順序。 */
+.sectionNumberHeading{grid-template-columns:auto 1fr;margin-bottom:36px}
+.sectionNumberHeading h2{font-size:clamp(31px,4vw,48px)}
+
+/* 04 校園生活沿用原「常用服務」卡片樣式，桌機一列三張、共兩列。 */
+.campusServices{background:#fff7e9}
+.campusServiceGrid{grid-template-columns:repeat(3,1fr)}
+.campusServiceGrid a>span{font-size:25px}
+
+/* 05 FAQ 的編號獨立顯示，避免和英文 kicker 混在一起。 */
+.faqStep{display:block;font-size:clamp(58px,8vw,88px);line-height:1;font-weight:900;color:#8dd6f4;letter-spacing:-.08em;margin-bottom:12px}
+
+@media(max-width:900px){.campusServiceGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sectionNumberHeading{grid-template-columns:1fr}.campusServiceGrid{grid-template-columns:1fr}.campusServiceGrid a{flex-direction:row;align-items:center}.campusServiceGrid a>svg{display:block}}

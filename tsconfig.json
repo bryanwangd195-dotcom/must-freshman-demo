@@ -24,7 +24,7 @@
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./*"
       ]
     }
   },
@@ -37,8 +37,10 @@
   ],
   "exclude": [
     "node_modules",
+    "src",
     "handoff",
     "outputs",
-    "spreadsheet_build"
+    "spreadsheet_build",
+    "github-update"
   ]
 }

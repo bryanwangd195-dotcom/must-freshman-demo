@@ -1,4 +1,5 @@
 import { Menu, Search, X } from "lucide-react";
+import { externalLinkProps } from "@/config/links";
 import { SITE_CONTENT } from "@/config/siteContent";
 
 interface SiteHeaderProps {
@@ -8,7 +9,8 @@ interface SiteHeaderProps {
 
 /**
  * 全站頁首
- * - 導覽項目與文字：src/config/siteContent.ts → navigation / brand
+ * - 導覽項目、文字與網址：src/config/siteContent.ts → navigation / brand
+ * - 外部網址會在新分頁開啟，並自動加入安全屬性。
  * - 搜尋目前只保留 UI；正式搜尋服務應由圖資中心決定索引來源。
  */
 export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
@@ -24,7 +26,7 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
 
       <nav className={menuOpen ? "nav open" : "nav"} aria-label="主要導覽">
         {SITE_CONTENT.navigation.map((item) => (
-          <a href={item.href} key={item.href}>{item.label}</a>
+          <a href={item.href} key={item.href} {...externalLinkProps(item.href)}>{item.label}</a>
         ))}
       </nav>
 
@@ -37,4 +39,3 @@ export function SiteHeader({ menuOpen, onMenuToggle }: SiteHeaderProps) {
     </header>
   );
 }
-

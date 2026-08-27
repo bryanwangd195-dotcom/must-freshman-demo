@@ -1,28 +1,20 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { externalLinkProps, SITE_LINKS } from "@/config/links";
+import { externalLinkProps } from "@/config/links";
 import { assetPath, MEDIA_ASSETS } from "@/config/mediaAssets";
 import { SITE_CONTENT } from "@/config/siteContent";
 import { faqs } from "@/data/content";
 import type { Contact } from "@/types";
 
 /**
- * 區段 04：校園生活常用入口
+ * 區段 03：校園生活常用入口
  * - 呈現方式沿用原「常用服務」圖文卡片。
- * - 六張卡片文字與圖示：src/config/siteContent.ts → campusLife.cards
- * - 六個網址：src/config/links.ts → calendar / campusMap / clubs / dining / instagram / facebook
+ * - 六張卡片文字、圖示與網址對照：src/config/siteContent.ts → campusLife.cards
+ * - 實際網址唯一來源：src/config/links.ts
  * - 本區不直接使用公仔圖片；FAQ 與 Hero 圖片仍由 src/config/mediaAssets.ts 管理。
  */
 export function CampusLife() {
   const content = SITE_CONTENT.campusLife;
-  const links = [
-    SITE_LINKS.calendar,
-    SITE_LINKS.campusMap,
-    SITE_LINKS.clubs,
-    SITE_LINKS.dining,
-    SITE_LINKS.instagram,
-    SITE_LINKS.facebook,
-  ];
   return (
     <section className="services campusServices" id="life">
       <div className="flowHeading sectionNumberHeading">
@@ -30,8 +22,8 @@ export function CampusLife() {
         <div><span className="kicker">{content.kicker}</span><h2>{content.title}</h2><p>{content.description}</p></div>
       </div>
       <div className="serviceGrid campusServiceGrid">
-        {content.cards.map((card, index) => (
-          <a href={links[index]} key={card.title} {...externalLinkProps(links[index])}>
+        {content.cards.map((card) => (
+          <a href={card.href} key={card.title} {...externalLinkProps(card.href)}>
             <span aria-hidden="true">{card.icon}</span>
             <div><b>{card.title}</b><small>{card.subtitle}</small></div>
             <ArrowRight />
@@ -45,10 +37,11 @@ export function CampusLife() {
 interface FaqSectionProps { openFaq: number | null; onFaqToggle: (index: number) => void; }
 
 /**
- * FAQ 區
+ * 區段 04：FAQ
  * - 區段標題：src/config/siteContent.ts → faq
  * - 問題與答案：src/data/content.ts → faqs
- * - 正式上線前，每一題應指定資料負責單位及最後確認日期。
+ * - FAQ 依 category 分組；answer 每一項顯示成一個條列。
+ * - links 放官方補充頁；owner 記錄負責確認答案的單位。
  */
 export function FaqSection({ openFaq, onFaqToggle }: FaqSectionProps) {
   const content = SITE_CONTENT.faq;
@@ -61,11 +54,28 @@ export function FaqSection({ openFaq, onFaqToggle }: FaqSectionProps) {
       </div>
       <div className="faq">
         {faqs.map((faq, index) => (
-          <div key={faq[0]}>
+          <div key={faq.question}>
             <button onClick={() => onFaqToggle(index)} aria-expanded={openFaq === index}>
-              <b><span>Q{String(index + 1).padStart(2, "0")}</span>{faq[0]}</b><span>{openFaq === index ? "−" : "+"}</span>
+              <b>
+                <span>Q{String(index + 1).padStart(2, "0")}</span>
+                <span className="faqCategory">{faq.category}</span>
+                {faq.question}
+              </b>
+              <span>{openFaq === index ? "−" : "+"}</span>
             </button>
-            {openFaq === index && <p>{faq[1]}</p>}
+            {openFaq === index && (
+              <div className="faqAnswer">
+                <ul>{faq.answer.map((line) => <li key={line}>{line}</li>)}</ul>
+                {faq.links && (
+                  <div className="faqLinks">
+                    {faq.links.map((link) => (
+                      <a href={link.url} key={link.url} {...externalLinkProps(link.url)}>{link.label} <ArrowRight /></a>
+                    ))}
+                  </div>
+                )}
+                <small>資料確認單位：{faq.owner}</small>
+              </div>
+            )}
           </div>
         ))}
       </div>

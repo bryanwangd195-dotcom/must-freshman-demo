@@ -6,9 +6,9 @@ import type { Requirement, TaskRule } from "@/types";
  * 身分 × 程序規則
  *
  * requirement 對應：
- * - required：每位該身分學生都要完成，顯示於「02 必辦流程」。
- * - conditional：符合個人條件才辦，顯示於「依情況辦理」。
- * - optional：自由選擇，顯示於「依情況辦理」。
+ * - required：每位該身分學生都要完成，顯示於「01 必辦流程」。
+ * - conditional：符合個人條件才辦，顯示於「02 依情況辦理」。
+ * - optional：自由選擇，顯示於「02 依情況辦理」。
  * - not_applicable：不適用，不顯示。
  *
  * 修改方式：

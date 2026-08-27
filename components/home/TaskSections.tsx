@@ -1,4 +1,4 @@
-import { ArrowRight, Clock3 } from "lucide-react";
+import { ArrowRight, Clock3, UsersRound } from "lucide-react";
 import { externalLinkProps } from "@/config/links";
 import { SITE_CONTENT } from "@/config/siteContent";
 import type { PersonalizedTask } from "@/lib/tasks";
@@ -20,19 +20,19 @@ const TASK_ICONS: Record<string, string> = {
   course: "📚",
   health: "❤️",
   orientation: "🎒",
-  campus: "🎉",
+  "student-card": "🪪",
 };
 
 interface RequiredFlowProps { tasks: PersonalizedTask[]; }
 
 /**
- * 區段 02：開學前必辦流程
+ * 區段 01：開學前必辦流程
  *
  * 維護索引：
  * - 區段標題：src/config/siteContent.ts → requiredFlow
- * - 任務名稱、說明、日期、立即辦理網址：src/data/tasks.ts
+ * - 任務名稱、說明、日期、適用身分、操作步驟與網址：src/data/tasks.ts
  * - 哪些身分要看到哪些任務：src/data/taskRules.ts
- * - actionUrl 為正式辦理入口；若是外部網址會自動開新視窗。
+ * - actionUrl 的實際網址集中於 src/config/links.ts；外部網址會自動開新視窗。
  */
 export function RequiredFlow({ tasks }: RequiredFlowProps) {
   const content = SITE_CONTENT.requiredFlow;
@@ -51,7 +51,7 @@ export function RequiredFlow({ tasks }: RequiredFlowProps) {
       {tasks.length ? (
         <div className="flowList">
           {tasks.map((task, index) => {
-            const actionUrl = task.actionUrl || "#contact";
+            const actionUrl = task.actionUrl;
             return (
               <article className="flowCard" key={task.id}>
                 <div className="flowNumber"><small>STEP</small><b>{String(index + 1).padStart(2, "0")}</b></div>
@@ -61,11 +61,21 @@ export function RequiredFlow({ tasks }: RequiredFlowProps) {
                   <h3>{task.title}</h3>
                   <p>{task.description}</p>
                   <div className="flowMeta">
-                    <span><Clock3 /> {content.datePending}</span>
-                    {index > 0 && <span>請先完成第 {index} 步</span>}
+                    <span><Clock3 /> 辦理日期：{task.displayDate}</span>
+                    <span><UsersRound /> 適用身分：{task.applicableTo}</span>
                   </div>
+                  {task.steps.length > 0 && (
+                    <div className="taskSteps">
+                      <b>登入步驟</b>
+                      <ol>{task.steps.map((step) => <li key={step}>{step}</li>)}</ol>
+                    </div>
+                  )}
                 </div>
-                <a href={actionUrl} {...externalLinkProps(actionUrl)}>{content.actionLabel} <ArrowRight /></a>
+                {actionUrl ? (
+                  <a href={actionUrl} {...externalLinkProps(actionUrl)}>{content.actionLabel} <ArrowRight /></a>
+                ) : (
+                  <span className="pendingAction">網址待確認</span>
+                )}
                 {index < tasks.length - 1 && <div className="flowArrow">↓</div>}
               </article>
             );
@@ -81,7 +91,7 @@ export function RequiredFlow({ tasks }: RequiredFlowProps) {
 interface ConditionalTasksProps { tasks: PersonalizedTask[]; }
 
 /**
- * 區段 03：依情況辦理
+ * 區段 02：依情況辦理
  * - 任務是否屬於此區，由 src/data/taskRules.ts 的 conditional／optional 決定。
  * - 每張卡片的連結直接讀取 src/data/tasks.ts 的 detailUrl。
  * - 本版固定呈現：學費減免、就學貸款、學生宿舍、校內停車證。

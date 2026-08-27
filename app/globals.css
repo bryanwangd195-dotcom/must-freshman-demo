@@ -22,17 +22,37 @@
 .mascotLine>a{height:275px;border-radius:80px 80px 20px 20px;background:white;display:flex;flex-direction:column;align-items:center;justify-content:end;padding:18px;border:1px solid #f0dfc3}
 @media(max-width:600px){.mascotLine>a{height:230px;border-radius:60px 60px 16px 16px}}
 
-/* 03、04 使用與 02 一致的大型區段編號，讓新生清楚知道閱讀順序。 */
+/* 02、03 使用與 01 一致的大型區段編號，讓新生清楚知道閱讀順序。 */
 .sectionNumberHeading{grid-template-columns:auto 1fr;margin-bottom:36px}
 .sectionNumberHeading h2{font-size:clamp(31px,4vw,48px)}
 
-/* 04 校園生活沿用原「常用服務」卡片樣式，桌機一列三張、共兩列。 */
+/* 03 校園生活沿用原「常用服務」卡片樣式，桌機一列三張、共兩列。 */
 .campusServices{background:#fff7e9}
 .campusServiceGrid{grid-template-columns:repeat(3,1fr)}
 .campusServiceGrid a>span{font-size:25px}
 
-/* 05 FAQ 的編號獨立顯示，避免和英文 kicker 混在一起。 */
+/* 04 FAQ 的編號獨立顯示，避免和英文 kicker 混在一起。 */
 .faqStep{display:block;font-size:clamp(58px,8vw,88px);line-height:1;font-weight:900;color:#8dd6f4;letter-spacing:-.08em;margin-bottom:12px}
 
 @media(max-width:900px){.campusServiceGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.sectionNumberHeading{grid-template-columns:1fr}.campusServiceGrid{grid-template-columns:1fr}.campusServiceGrid a{flex-direction:row;align-items:center}.campusServiceGrid a>svg{display:block}}
+
+/* 必辦卡片的日期、適用身分與登入步驟各自分段，方便學生掃讀。 */
+.flowMeta{flex-wrap:wrap}
+.taskSteps{margin-top:12px;padding:12px 14px;background:#f5f9fc;border-radius:12px;font-size:13px;color:#4f687d}
+.taskSteps>b{display:block;color:var(--navy);margin-bottom:5px}
+.taskSteps ol{margin:0;padding-left:22px}
+.taskSteps li+li{margin-top:3px}
+.pendingAction{background:#edf2f5;color:#6b7e8d;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:900;text-align:center;white-space:nowrap}
+
+/* FAQ 採分類、條列答案、官方連結與資料確認單位四層結構。 */
+.faqSection .faq button b .faqCategory{background:#fff0cd;color:#8a5d00}
+.faqAnswer{padding:0 0 18px 45px;color:#526c81}
+.faqAnswer ul{margin:0;padding-left:20px}
+.faqAnswer li+li{margin-top:7px}
+.faqLinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.faqLinks a{display:inline-flex;align-items:center;gap:5px;background:#e8f6fc;color:#176fae;border-radius:10px;padding:7px 10px;font-size:13px;font-weight:900}
+.faqLinks svg{width:14px}
+.faqAnswer>small{display:block;margin-top:12px;color:#7b8e9d}
+
+@media(max-width:600px){.faqSection .faq button b{align-items:flex-start;flex-wrap:wrap}.faqAnswer{padding-left:0}.pendingAction{grid-column:2/4}}

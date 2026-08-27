@@ -21,7 +21,8 @@ import { ConditionalTasks, RequiredFlow } from "./home/TaskSections";
  * 維護人員不應在這裡直接修改正式文字、網址或圖片：
  * - 文字：src/config/siteContent.ts
  * - 圖片：src/config/mediaAssets.ts 與 public/mascot/
- * - 任務、日期、網址：src/data/tasks.ts
+ * - 任務、日期、適用身分與步驟：src/data/tasks.ts
+ * - 所有正式網址：src/config/links.ts
  * - 身分規則：src/data/taskRules.ts
  * - 聯絡人：src/data/contacts.ts
  * - FAQ：src/data/content.ts

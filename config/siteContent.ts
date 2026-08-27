@@ -1,3 +1,5 @@
+import { SITE_LINKS } from "@/config/links";
+
 /**
  * 首頁顯示文字總表
  *
@@ -24,6 +26,7 @@ export const SITE_CONTENT = {
     { label: "必辦流程", href: "#journey" },
     { label: "依情況辦理", href: "#conditional" },
     { label: "校園生活", href: "#life" },
+    { label: "重要日程", href: SITE_LINKS.importantSchedule },
     { label: "FAQ", href: "#faq" },
   ],
   hero: {
@@ -37,16 +40,15 @@ export const SITE_CONTENT = {
     stickerSecondary: "MUST｜GO!",
   },
   requiredFlow: {
-    step: "02",
+    step: "01",
     kicker: "REQUIRED STEPS",
     title: "照順序完成開學前必辦流程",
-    description: "以下是目前設定為每位新生都要完成的項目。從第 1 步開始，就不容易漏掉。",
+    description: "請從第 1 步開始，並留意每張卡片的辦理日期與適用身分。",
     requiredLabel: "必須完成",
-    datePending: "辦理日期：待行政單位確認",
     actionLabel: "前往辦理",
   },
   conditional: {
-    step: "03",
+    step: "02",
     kicker: "CHECK YOUR NEEDS",
     title: "再確認：這些要依你的情況辦理",
     description: "不是每位新生都需要完成。符合需求或資格時，再點進去確認。",
@@ -54,24 +56,24 @@ export const SITE_CONTENT = {
     actionLabel: "了解是否需要",
   },
   campusLife: {
-    step: "04",
+    step: "03",
     kicker: "CAMPUS LIFE",
     title: "不只辦手續，也開始認識明新",
     description: "六個常用入口集中呈現；正式網址確認後，點選即可前往校方對應頁面。",
     cards: [
-      { title: "校園行事曆", subtitle: "重要日期與校內活動", icon: "📅" },
-      { title: "校園地圖", subtitle: "快速找到教室與行政單位", icon: "🗺️" },
-      { title: "社團活動", subtitle: "認識學生社團與課外活動", icon: "🎉" },
-      { title: "餐飲生活", subtitle: "校內外餐飲與生活資訊", icon: "🍽️" },
-      { title: "明新IG", subtitle: "追蹤明新 Instagram", icon: "📸" },
-      { title: "明新FB", subtitle: "追蹤明新 Facebook", icon: "👍" },
+      { title: "校園行事曆", subtitle: "重要日期與校內活動", icon: "📅", href: SITE_LINKS.calendar },
+      { title: "校園地圖", subtitle: "快速找到教室與行政單位", icon: "🗺️", href: SITE_LINKS.campusMap },
+      { title: "社團活動", subtitle: "認識學生社團與課外活動", icon: "🎉", href: SITE_LINKS.clubs },
+      { title: "餐飲生活", subtitle: "校內外餐飲與生活資訊", icon: "🍽️", href: SITE_LINKS.dining },
+      { title: "明新IG", subtitle: "追蹤明新 Instagram", icon: "📸", href: SITE_LINKS.instagram },
+      { title: "明新FB", subtitle: "追蹤明新 Facebook", icon: "👍", href: SITE_LINKS.facebook },
     ],
   },
   faq: {
-    step: "05",
+    step: "04",
     kicker: "FRESHMAN FAQ",
     title: "新生常見問題",
-    description: "先整理新生與家長最可能提出的問題，供行政單位在會議中確認答案與資料負責單位。",
+    description: "從報到、繳費到健檢與新生定向，先看最常遇到的問題。",
   },
   contact: {
     eyebrow: "還有問題？",

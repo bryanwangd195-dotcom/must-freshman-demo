@@ -6,7 +6,6 @@ import { SITE_LINKS } from "@/config/links";
  * 行政或維護人員若只要改文字，優先從本檔開始：
  * - 學年度、網站名稱、首頁標題與輔助說明
  * - 各大區塊標題、說明、按鈕文字
- * - AI 小幫手固定提示文字
  *
  * 任務名稱、任務日期、正式網址與承辦單位不在本檔，請改：
  * - src/data/tasks.ts
@@ -83,16 +82,5 @@ export const SITE_CONTENT = {
   footer: {
     placeholder: "明新科技大學 歡迎妳/你",
     copyright: "© MUST Smart Freshman Navigator · Prototype",
-  },
-  assistant: {
-    buttonPrompt: "有問題？",
-    buttonAction: "問我就好！",
-    title: "明新新生小幫手",
-    welcome: "👋 嗨！不知道接下來要做什麼嗎？我會依網站的 Mock Data 協助你找方向。",
-    defaultAnswer: "選一個問題，或直接輸入你想了解的事情。",
-    noAnswer: "目前沒有找到明新官方確認的這項資訊。建議從下方任務或聯絡窗口繼續查找。",
-    inputPlaceholder: "輸入你的問題…",
-    privacy: "請勿輸入密碼、身分證字號或其他敏感個人資料。",
-    prompts: ["我現在要做什麼？", "如何查學號？", "學費怎麼繳？", "我要申請宿舍", "轉學生需要健檢嗎？"],
   },
 } as const;

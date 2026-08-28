@@ -6,7 +6,7 @@
 |---|---|---|
 | `humanities.png` | 首頁 Hero 主視覺 | 透明 PNG，直式，高度至少 900px |
 | `engineering.png` | FAQ 圖片 | 透明 PNG |
-| `semiconductor.png` | AI 小幫手圖片 | 透明 PNG |
+| `semiconductor.png` | 本版前台未顯示，保留作為後續視覺素材 | 透明 PNG |
 | `human-ecology.png` | 本版前台未顯示，保留作為後續視覺素材 | 透明 PNG |
 | `management.png` | 本版前台未顯示，保留作為後續視覺素材 | 透明 PNG |
 

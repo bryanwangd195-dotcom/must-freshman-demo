@@ -9,14 +9,14 @@ import type { ContactDirectoryKey } from "@/data/contacts";
  * - question：學生看到的問題，盡量使用日常用語。
  * - answer：每一個陣列元素會顯示成一個條列，避免答案擠成長段落。
  * - links：官方補充資料；label 是學生看得懂的連結名稱。
- * - owner：負責確認答案的業務單位，不一定顯示承辦人姓名。
+ * - owner：沒有聯絡分機時才顯示的資料確認單位；不需要顯示時可省略。
  */
 export interface FaqItem {
   category: "入學流程" | "健康檢查" | "新生定向";
   question: string;
   answer: string[];
   links?: { label: string; url: string }[];
-  owner: string;
+  owner?: string;
   contactKey?: ContactDirectoryKey;
 }
 
@@ -28,7 +28,6 @@ export const faqs: FaqItem[] = [
       "請從 01 必辦流程的第 1 項開始，依照畫面順序完成。",
       "每張卡片都會標示辦理日期、適用身分與官方入口，先確認自己是否符合再前往辦理。",
     ],
-    owner: "新生資訊總窗口",
   },
   {
     category: "入學流程",
@@ -54,8 +53,8 @@ export const faqs: FaqItem[] = [
       "如果姓名、身分或其他個人資料有誤，請聯絡註冊組協助修改，不要自行建立重複資料。",
     ],
     links: [{ label: "前往學生服務系統", url: SITE_LINKS.studentServices }],
-    owner: "財務處",
-    contactKey: "finance",
+    owner: "註冊組",
+    contactKey: "registration",
   },
   {
     category: "入學流程",
@@ -71,6 +70,7 @@ export const faqs: FaqItem[] = [
       { label: "查看信用卡繳費操作說明", url: SITE_LINKS.creditCardGuide },
     ],
     owner: "財務處",
+    contactKey: "finance",
   },
   {
     category: "入學流程",

@@ -22,12 +22,6 @@ export const MEDIA_ASSETS = {
     usage: "首頁歡迎區主視覺",
     recommendedSize: "透明 PNG，建議高度至少 900px",
   },
-  assistant: {
-    path: "/mascot/semiconductor.png",
-    alt: "明新新生 AI 小幫手公仔",
-    usage: "右下角 AI 新生小幫手按鈕",
-    recommendedSize: "透明 PNG，建議正方形或直式",
-  },
   faq: {
     path: "/mascot/engineering.png",
     alt: "明新公仔協助解答新生問題",

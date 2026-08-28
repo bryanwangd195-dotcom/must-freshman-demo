@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { SITE_CONTENT } from "@/config/siteContent";
-import { contacts } from "@/data/contacts";
 import { getTasksForStudent } from "@/lib/tasks";
 import { Assistant } from "./home/Assistant";
 import { Hero } from "./home/Hero";
@@ -71,7 +70,7 @@ export default function Home() {
         <ConditionalTasks tasks={conditionalTasks} />
         <CampusLife />
         <FaqSection openFaq={openFaq} onFaqToggle={(index) => setOpenFaq(openFaq === index ? null : index)} />
-        <ContactSection contact={contacts[0]} />
+        <ContactSection />
       </main>
 
       <SiteFooter />

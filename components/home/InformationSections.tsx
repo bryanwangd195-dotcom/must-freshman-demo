@@ -4,7 +4,7 @@ import { externalLinkProps } from "@/config/links";
 import { assetPath, MEDIA_ASSETS } from "@/config/mediaAssets";
 import { SITE_CONTENT } from "@/config/siteContent";
 import { faqs } from "@/data/content";
-import type { Contact } from "@/types";
+import { CONTACT_DIRECTORY, formatContactPhone, SCHOOL_SWITCHBOARD } from "@/data/contacts";
 
 /**
  * 區段 03：校園生活常用入口
@@ -53,7 +53,9 @@ export function FaqSection({ openFaq, onFaqToggle }: FaqSectionProps) {
         <Image src={assetPath(MEDIA_ASSETS.faq.path)} alt={MEDIA_ASSETS.faq.alt} width={180} height={210} />
       </div>
       <div className="faq">
-        {faqs.map((faq, index) => (
+        {faqs.map((faq, index) => {
+          const faqContact = faq.contactKey ? CONTACT_DIRECTORY[faq.contactKey] : null;
+          return (
           <div key={faq.question}>
             <button onClick={() => onFaqToggle(index)} aria-expanded={openFaq === index}>
               <b>
@@ -73,11 +75,16 @@ export function FaqSection({ openFaq, onFaqToggle }: FaqSectionProps) {
                     ))}
                   </div>
                 )}
-                <small>資料確認單位：{faq.owner}</small>
+                {faqContact ? (
+                  <small className="faqContact">聯絡窗口：{faqContact.department}　{formatContactPhone(faq.contactKey!)}</small>
+                ) : (
+                  <small>資料確認單位：{faq.owner}</small>
+                )}
               </div>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
@@ -85,15 +92,22 @@ export function FaqSection({ openFaq, onFaqToggle }: FaqSectionProps) {
 
 /**
  * 聯絡資訊區
- * - 聯絡資料唯一來源：src/data/contacts.ts
- * - 目前使用第一筆作為網站共同窗口；任務詳細頁未來應依 contactId 顯示各自承辦人。
+ * - 總機、單位名稱與分機唯一來源：src/data/contacts.ts
+ * - CONTACT_DIRECTORY 的內容會自動列在本區，不需在元件內逐項新增。
  */
-export function ContactSection({ contact }: { contact: Contact }) {
+export function ContactSection() {
   const content = SITE_CONTENT.contact;
   return (
     <section className="contact" id="contact">
       <div><span>{content.eyebrow}</span><h2>{content.title}</h2><p>{content.description}</p></div>
-      <div><b>{contact.department}</b><span>承辦人：{contact.name}</span><span>電話：{contact.phone}</span><span>Email：{contact.email}</span></div>
+      <div className="contactDirectory">
+        <b>明新科技大學　總機 {SCHOOL_SWITCHBOARD}</b>
+        <div className="contactRows">
+          {Object.values(CONTACT_DIRECTORY).map((contact) => (
+            <span key={contact.department}><strong>{contact.department}</strong>　分機 {contact.extensions}</span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -23,7 +23,7 @@ export const tasks: Task[] = [
     category: "入學準備",
     title: "查詢新生學號",
     shortTitle: "查詢學號",
-    description: "完成帳號啟用，準備使用校內各項服務。",
+    description: "登入網路報到系統查詢學號。",
     icon: "Search",
     displayDate: "即日起",
     applicableTo: "博士生、碩士生、日四技生（不含境外生）",

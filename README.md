@@ -13,7 +13,7 @@
 | 必辦程序、日期、適用身分與操作步驟 | `data/tasks.ts` |
 | 必辦／依情況辦理規則 | `data/taskRules.ts` |
 | FAQ 分類、答案、連結名稱與資料確認單位 | `data/content.ts` |
-| 聯絡窗口 | `data/contacts.ts` |
+| 學校總機、各單位分機與 FAQ 聯絡窗口 | `data/contacts.ts` |
 | 圖片路徑與用途 | `config/mediaAssets.ts` |
 | 圖片原始檔 | `public/mascot/` |
 

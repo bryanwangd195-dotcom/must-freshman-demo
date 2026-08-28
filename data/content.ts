@@ -1,4 +1,5 @@
 import { SITE_LINKS } from "@/config/links";
+import type { ContactDirectoryKey } from "@/data/contacts";
 
 /**
  * FAQ 資料格式
@@ -16,6 +17,7 @@ export interface FaqItem {
   answer: string[];
   links?: { label: string; url: string }[];
   owner: string;
+  contactKey?: ContactDirectoryKey;
 }
 
 export const faqs: FaqItem[] = [
@@ -41,7 +43,8 @@ export const faqs: FaqItem[] = [
       { label: "查詢新生學號", url: SITE_LINKS.newStudentRegistration },
       { label: "前往學生服務系統", url: SITE_LINKS.studentServices },
     ],
-    owner: "招生與資訊服務業務單位",
+    owner: "註冊組",
+    contactKey: "registration",
   },
   {
     category: "入學流程",
@@ -51,7 +54,8 @@ export const faqs: FaqItem[] = [
       "如果姓名、身分或其他個人資料有誤，請聯絡註冊組協助修改，不要自行建立重複資料。",
     ],
     links: [{ label: "前往學生服務系統", url: SITE_LINKS.studentServices }],
-    owner: "註冊組",
+    owner: "財務處",
+    contactKey: "finance",
   },
   {
     category: "入學流程",
@@ -79,6 +83,7 @@ export const faqs: FaqItem[] = [
     ],
     links: [{ label: "前往學生服務系統", url: SITE_LINKS.studentServices }],
     owner: "課務組",
+    contactKey: "curriculum",
   },
   {
     category: "健康檢查",
@@ -89,7 +94,8 @@ export const faqs: FaqItem[] = [
       "自行健檢完成後，請將報告影本交到宗山樓一樓健康中心備查。",
     ],
     links: [{ label: "查看新生健康檢查專區", url: SITE_LINKS.healthCheck }],
-    owner: "健康中心",
+    owner: "健諮中心",
+    contactKey: "health",
   },
   {
     category: "健康檢查",
@@ -98,7 +104,8 @@ export const faqs: FaqItem[] = [
       "如果可以取得前一所學校的新生健檢報告，請將影本交到宗山樓一樓健康中心備查。",
       "如果無法取得原健檢報告，請在 115 年 10 月 28 日（三）14:00，到宗山樓一樓室內廣場參加補檢。",
     ],
-    owner: "健康中心",
+    owner: "健諮中心",
+    contactKey: "health",
   },
   {
     category: "健康檢查",
@@ -108,13 +115,15 @@ export const faqs: FaqItem[] = [
       "健檢報告日期必須是 115 年 6 月以後，才符合本次收件條件。",
     ],
     links: [{ label: "查看新生健康檢查專區", url: SITE_LINKS.healthCheck }],
-    owner: "健康中心",
+    owner: "健諮中心",
+    contactKey: "health",
   },
   {
     category: "健康檢查",
     question: "日間部碩士生什麼時候辦理健檢？",
-    answer: ["預計於 115 年 10 月 28 日（三）14:00，在宗山樓一樓室內廣場辦理。"],
-    owner: "健康中心",
+    answer: ["於 115 年 10 月 28 日（三）14:00，在宗山樓一樓室內廣場辦理。"],
+    owner: "健諮中心",
+    contactKey: "health",
   },
   {
     category: "健康檢查",
@@ -123,7 +132,8 @@ export const faqs: FaqItem[] = [
       "不需要空腹，可以正常吃東西，日常用藥也可以照常服用。",
       "建議健檢前 3 天少吃油膩、辛辣食物，並保持充足睡眠。",
     ],
-    owner: "健康中心",
+    owner: "健諮中心",
+    contactKey: "health",
   },
   {
     category: "健康檢查",
@@ -134,14 +144,16 @@ export const faqs: FaqItem[] = [
       "健檢能幫助你及早了解自己的健康狀況，也讓學校在學習與校園生活中提供適當協助。",
     ],
     links: [{ label: "查看新生健康檢查專區", url: SITE_LINKS.healthCheck }],
-    owner: "健康中心",
+    owner: "健諮中心",
+    contactKey: "health",
   },
   {
     category: "新生定向",
     question: "115 學年度新生定向輔導在哪裡集合？",
     answer: ["集合地點在明明樓（智慧長廊）。", "請提早抵達，並留意學校最新通知或系上集合安排。"],
     links: [{ label: "查看新生定向活動公告", url: SITE_LINKS.orientation }],
-    owner: "新生定向業務單位",
+    owner: "生活輔導組",
+    contactKey: "studentLife",
   },
   {
     category: "新生定向",
@@ -150,7 +162,8 @@ export const faqs: FaqItem[] = [
       "新生定向是開學初很重要的校園適應活動，原則上請新生參加。",
       "如果因不可抗力因素無法出席，請依規定向各系教官辦理請假。",
     ],
-    owner: "新生定向業務單位",
+    owner: "生活輔導組",
+    contactKey: "studentLife",
   },
   {
     category: "新生定向",
@@ -160,7 +173,8 @@ export const faqs: FaqItem[] = [
       "說明學費減免、就學貸款、請假、選課等新生常用資訊。",
       "當天也安排新生健康檢查，幫助你更快熟悉大學生活。",
     ],
-    owner: "新生定向業務單位",
+    owner: "生活輔導組",
+    contactKey: "studentLife",
   },
 ];
 

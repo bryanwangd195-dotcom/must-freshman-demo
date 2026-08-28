@@ -78,10 +78,10 @@ export const SITE_CONTENT = {
   contact: {
     eyebrow: "還有問題？",
     title: "別擔心，我們陪你找到答案。",
-    description: "Prototype 階段尚未填入正式聯絡資料；確認後可直接由資料檔更新，不需修改介面。",
+    description: "找不到答案時，可依業務類別直接聯絡承辦單位。",
   },
   footer: {
-    placeholder: "地址、總機與網站聯絡單位：待行政單位確認",
+    placeholder: "明新科技大學 歡迎妳/你",
     copyright: "© MUST Smart Freshman Navigator · Prototype",
   },
   assistant: {
